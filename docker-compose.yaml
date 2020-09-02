@@ -1,0 +1,21 @@
+version: "3.1"
+services:
+  db:
+    build: 
+      dockerfile: ./postgres.dockerfile
+      context: ./docker
+    image: jsf-primefaces-wildfly-crud-db
+    container_name: jsf-primefaces-wildfly-crud-db-container
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: postgres
+      POSTGRES_DB: jsf-primefaces-wildfly-crud
+    ports:
+      - "5432:5432"
+    networks:
+      - jsf-primefaces-wildfly-crud-network
+
+networks: 
+  jsf-primefaces-wildfly-crud-network:
+    driver: bridge
