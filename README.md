@@ -1,6 +1,6 @@
 # Exemplo de CRUD utilizando as tecnologias abaixo:
-- Java 14
-- Wildfly 19
+- Java 14.0.2
+- Wildfly 19.1.0
 - JSF 2.3
 - Primefaces 8.0
 - EJB
