@@ -25,6 +25,7 @@ import br.com.jsf_primefaces_wildfly_crud.models.Person;
 //https://antoniogoncalves.org/2011/09/25/injection-with-cdi-part-iii/
 @Named
 @ViewScoped
+@Interceptors({LogInterceptor.class})
 public class PersonBean extends GenericBean implements Serializable{
 
 	private static final long serialVersionUID = -8898732422678618156L;
