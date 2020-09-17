@@ -10,9 +10,9 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
+import br.com.jsf_primefaces_wildfly_crud.dao.common.GenericDAOInterface;
 import br.com.jsf_primefaces_wildfly_crud.dao.common.ConvertDAODTO;
 import br.com.jsf_primefaces_wildfly_crud.dao.common.GenericDAO;
-import br.com.jsf_primefaces_wildfly_crud.dao.common.GenericDAOInterface;
 import br.com.jsf_primefaces_wildfly_crud.dto.common.GenericDTO;
 import br.com.jsf_primefaces_wildfly_crud.dto.person.PersonDTO;
 import br.com.jsf_primefaces_wildfly_crud.models.LogEntity;

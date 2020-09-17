@@ -1,4 +1,4 @@
-package br.com.agendamento_simples.common;
+package br.com.jsf_primefaces_wildfly_crud.common.debug;
 
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
@@ -14,8 +14,11 @@ public class LogPhaseListener implements PhaseListener {
 
 	@Override
 	public void beforePhase(PhaseEvent event) {
-		System.out.println("FASE ID: " + event.getPhaseId());
-		System.out.println("FASE: " + event.getPhaseId().getName());
+		String logPhaseListener = System.getProperty("logPhaseListener");
+		if(logPhaseListener.equals("true")) {
+			System.out.println("FASE ID: " + event.getPhaseId());
+			System.out.println("FASE: " + event.getPhaseId().getName());
+		}
 	}
 
 	@Override

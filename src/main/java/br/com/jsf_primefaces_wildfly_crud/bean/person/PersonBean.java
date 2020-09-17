@@ -10,8 +10,11 @@ import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.interceptor.Interceptors;
 
 import br.com.jsf_primefaces_wildfly_crud.bean.common.GenericBean;
+import br.com.jsf_primefaces_wildfly_crud.common.debug.LogInterceptor;
+import br.com.jsf_primefaces_wildfly_crud.common.debug.Logger;
 import br.com.jsf_primefaces_wildfly_crud.dao.person.PersonDAO;
 import br.com.jsf_primefaces_wildfly_crud.dao.person.PersonDAOException;
 import br.com.jsf_primefaces_wildfly_crud.dto.person.PersonDTO;
@@ -57,7 +60,7 @@ public class PersonBean extends GenericBean implements Serializable{
 //		dentro de uma transação
 //		@Transactional 
 	public void save() {
-		System.out.println("saving "+ personDTO.getName());
+		logger.printInfo("saving "+ personDTO.getName());
 		try {
 			personDAO.save(personDTO);
 			listAll();
@@ -69,6 +72,7 @@ public class PersonBean extends GenericBean implements Serializable{
 	}
 	
 	public void editPerson(PersonDTO personDTO) {
+		logger.printDebug("editing "+ personDTO.getName());
 		this.personDTO = personDTO;
 	}
 	

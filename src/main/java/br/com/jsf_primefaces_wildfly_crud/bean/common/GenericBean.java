@@ -3,8 +3,18 @@ package br.com.jsf_primefaces_wildfly_crud.bean.common;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+
+import br.com.jsf_primefaces_wildfly_crud.common.debug.AllLogsQualifier;
+import br.com.jsf_primefaces_wildfly_crud.common.debug.InfoLogsQualifier;
+import br.com.jsf_primefaces_wildfly_crud.common.debug.Logger;
 
 public class GenericBean {
+	
+	//besides create a new annotation(actually a qualifier), the beans.xml file it's required too
+	//https://www.alexgama.io/java/cdi-series/cdi-in-java-series-part-2-qualifiers/
+	@Inject @InfoLogsQualifier
+	protected Logger logger;
 	
 	protected void addMessageInfo(String message) {
 		addMessageWithSeverity(FacesMessage.SEVERITY_INFO, message);

@@ -8,9 +8,9 @@
 
 		<jta-data-source>java:jboss/crudDS</jta-data-source>
 
-<!-- 		"create" para dar drop nas tabelas e criar novamente -->
-<!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
 		<properties>
+		<!-- 		"create" para dar drop nas tabelas e criar novamente -->
+<!-- 			<property name="hibernate.hbm2ddl.auto" value="create" /> -->
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
