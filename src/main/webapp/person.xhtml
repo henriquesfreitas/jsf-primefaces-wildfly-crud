@@ -6,49 +6,66 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-<ui:composition template="_template.xhtml">
+<ui:composition template="template.xhtml">
 
-	<ui:define name="titulo">
+    <ui:define name="head">
+        <title>Pessoa</title>
+    </ui:define>
+
+	<ui:define name="title">
 		Pessoa
 	</ui:define>
 
-	<ui:define name="conteudo">
+	<ui:define name="body">
 		<h:form id="personForm">
-		<p:messages id="messages" showSummary="true" showDetail="false" />
-			<p:panel header="Cadastro de Pessoa">
-				<h:panelGrid columns="2" cellpadding="4">
+		<p:messages id="messages" redisplay="false" showSummary="true" showDetail="false" />
+			<p:panel layout="grid" styleClass="box-primary ui-fluid">
+				<div class="box-body col-md-3">
+					
 					<h:outputText value="Nome: " />
 					<p:inputText value="#{personBean.personDTO.name}" required="true"
 						requiredMessage="Nome obrigatório" maxlength="255" />
 
 					<h:outputText value="CPF: " />
 					<p:inputMask value="#{personBean.personDTO.cpf}" required="true"
-						requiredMessage="CPF obrigatório" mask="999.999.999-99"/>
-						
+						requiredMessage="CPF obrigatório" mask="999.999.999-99" />
+
 					<h:outputText value="Data de Nascimento: " />
-					<p:calendar value="#{personBean.personDTO.dateBirth}" navigator="true" required="true" requiredMessage="Data de Nascimento obrigatório" pattern="dd/MM/yyyy" />
-						
+					<p:calendar maxlength="10"
+						value="#{personBean.personDTO.dateBirth}" navigator="true"
+						mask="99/99/9999" required="true"
+						requiredMessage="Data de Nascimento obrigatório"
+						pattern="dd/MM/yyyy" />
+
 					<h:outputText value="Telefone: " />
 					<p:inputMask value="#{personBean.personDTO.phone}"
-						mask="(99)9999-9999"/>
-						
+						mask="(99)9999-9999" />
+
 					<h:outputText value="Email: " />
 					<p:inputText value="#{personBean.personDTO.email}" required="true"
-						requiredMessage="Email obrigatório" maxlength="255"/>
+						requiredMessage="Email obrigatório" maxlength="255" />
 
-					<p:commandButton value="Salvar" action="#{personBean.save()}"
-						update="@form :formDataTablePerson:dataTablePerson" />
-						
-					<p:commandButton value="Cancelar" action="#{personBean.newPerson()}"
-					update="@form :formDataTablePerson:dataTablePerson" />
-				</h:panelGrid>
+					<div class="box-footer row">
+						<div class="col-xs-5">
+							<p:commandButton value="Salvar" action="#{personBean.save()}"
+								update="@form :formDataTablePerson:dataTablePerson"
+								icon="fa fa-check" styleClass="btn btn-primary" />
+						</div>
+						<div class="col-xs-5">
+							<p:commandButton value="Cancelar" styleClass="btn"
+								action="#{personBean.newPerson()}"
+								update="@form :formDataTablePerson:dataTablePerson" />
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
 			</p:panel>
 		</h:form>
 
 		<h:form id="formDataTablePerson">
 			<p:dataTable var="personDTO" value="#{personBean.listPersonDTO}"
 				id="dataTablePerson" paginator="true" rows="5">
-				<f:facet name="header">Pessoas</f:facet>
+				<f:facet name="header"><h4 class="box-body">Lista de Pessoas</h4></f:facet>
 
 				<p:column headerText="Id" sortBy="#{personDTO.idPerson}"
 					filterBy="#{personDTO.idPerson}" filterMatchMode="exact" width="10%">
@@ -76,11 +93,11 @@
 				</p:column>
 
 				<p:column headerText="Ações" width="8%">
-					<p:commandLink  class="pi pi-pencil" style="margin-right: 15px; font-size: 2em" 
-						action="#{personBean.editPerson(personDTO)}" update=":personForm"/>
-					<p:commandLink  class="pi pi-times" style="font-size: 2em" onclick="if (!confirm('Sure?')) return false;"
+					<p:commandLink  style="margin-right: 15px; font-size: 2em; text-decoration: none; color: black;" 
+						action="#{personBean.editPerson(personDTO)}" update=":personForm"><div class="glyphicon glyphicon-pencil"></div></p:commandLink>
+					<p:commandLink  class="pi pi-times" style="font-size: 2em;text-decoration: none; color: black;" onclick="if (!confirm('Você tem certeza?')) return false;"
 						actionListener="#{personBean.removePerson(personDTO.idPerson)}" update=":formDataTablePerson :personForm">
-					</p:commandLink>
+					<div class="glyphicon glyphicon-remove"></div></p:commandLink>
 				</p:column>
 
 			</p:dataTable>

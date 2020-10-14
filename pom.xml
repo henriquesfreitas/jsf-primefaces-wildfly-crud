@@ -22,6 +22,30 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+		    <groupId>com.github.adminfaces</groupId>
+		    <artifactId>admin-template</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+<!-- Admin template will bring the following transitive dependencies: -->
+<!-- <dependency> -->
+<!--     <groupId>com.github.adminfaces</groupId> -->
+<!--     <artifactId>admin-theme</artifactId> -->
+<!--     <version>1.1.1-SNAPSHOT</version> -->
+<!-- </dependency> -->
+
+<!-- <dependency> -->
+<!--     <groupId>org.primefaces</groupId> -->
+<!--     <artifactId>primefaces</artifactId> -->
+<!--     <version>7.0</version> -->
+<!-- </dependency> -->
+
+<!-- <dependency> -->
+<!--     <groupId>org.omnifaces</groupId> -->
+<!--     <artifactId>omnifaces</artifactId> -->
+<!--     <version>2.1</version> -->
+<!-- </dependency> -->
+	
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
 		<dependency>
 			<groupId>javax</groupId>
@@ -30,7 +54,9 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces 
+			as I'm using adminfaces, witch already come with primefaces 7.0, this dependy it's not required
+			but I've included to stay updated with the last version-->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
